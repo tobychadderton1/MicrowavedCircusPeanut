@@ -61,8 +61,11 @@ function love.load()
 end
 
 function getValues(typev)
+	love.math.setRandomSeed(125)
 	option1.text = typev[ love.math.random( #typev ) ]
+	love.math.setRandomSeed(75)
 	option2.text = typev[ love.math.random( #typev ) ]
+	love.math.setRandomSeed(25)
 	option3.text = typev[ love.math.random( #typev ) ]
 end
 
