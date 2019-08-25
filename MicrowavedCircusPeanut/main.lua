@@ -4,7 +4,7 @@ function love.load()
 
 	verbs = {"looks like", "is", "smells like", "eats like", "made love with",
 	"ate", "defacated on", "murdered", "killed", "was"}
-	
+
 	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish", "a frisky cat",
 	"a retard", "foot fungus", "you", "your sister", "an idiot", "your father"}
 
