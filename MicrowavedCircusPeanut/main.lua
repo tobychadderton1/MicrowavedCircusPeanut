@@ -95,8 +95,9 @@ function love.mousepressed(x, y, button, istouch)
 	if button == 1 then
 		if isMouseHovering(sendButton) and sendButton.isActive then
 			totalposts = totalposts + 1
-			gamestage = "nouns"
 			followers = followers + love.math.random(10, 20)
+			getValues(nouns)
+			gamestage = "nouns"
 			message = ""
 			msgDone = false
 		end
