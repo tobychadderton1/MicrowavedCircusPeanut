@@ -1,5 +1,5 @@
 function love.load()
-	nouns = {"Your mother", "Your hair", "Your nan", "Your dog", "Your feet", "Your mum's foot"}
+	nouns = {"Your mother", "Your hair", "Your nan", "Your dog", "Your foot", "Your mum's foot"}
 	verbs = {"looks like", "is", "smells like", "eats like", "made love with"}
 	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish", "a frisky cat", "a retard", "foot fungus", "you", "your sister", "an idiot"}
 
@@ -13,6 +13,8 @@ function love.load()
 	message = ""
 	followers = 0
 	totalposts = 0
+	msgDone = false
+	gamestage = "nouns"
 
 	messageFont = love.graphics.newFont(30)
 	buttonFont = love.graphics.newFont(30)
@@ -72,11 +74,35 @@ function isMouseHovering(buttonToCheck)
 	end
 end
 
+function optionButton(optionBtn)
+	if isMouseHovering(optionBtn) and optionBtn.isActive then
+		if gamestage == "nouns" then
+			message = message .. optionBtn.text
+			getValues(verbs)
+			gamestage = "verbs"
+		elseif gamestage == "verbs" then
+			message = message .. "\n" .. optionBtn.text
+			getValues(adjectives)
+			gamestage = "adjectives"
+		else
+			message = message .. "\n" .. optionBtn.text
+			msgDone = true
+		end
+	end
+end
+
 function love.mousepressed(x, y, button, istouch)
 	if button == 1 then
 		if isMouseHovering(sendButton) and sendButton.isActive then
-			message = "hello"
+			totalposts = totalposts + 1
+			gamestage = "nouns"
+			followers = followers + love.math.random(10, 20)
+			message = ""
+			msgDone = false
 		end
+		optionButton(option1)
+		optionButton(option2)
+		optionButton(option3)
 	end
 end
 
@@ -123,7 +149,7 @@ function love.draw()
 	-- Draw Message text
 	love.graphics.setFont(messageFont)
 	love.graphics.setColor(0, 0, 0)
-	love.graphics.print(message, 660, 150)
+	love.graphics.print(message, 640, 200)
 
 	-- Draw Send Button
 	drawButton(sendButton)
@@ -139,5 +165,8 @@ function love.draw()
 end
 
 function love.update(dt)
-
+	sendButton.isActive = msgDone
+	option1.isActive = not msgDone
+	option2.isActive = not msgDone
+	option3.isActive = not msgDone
 end
