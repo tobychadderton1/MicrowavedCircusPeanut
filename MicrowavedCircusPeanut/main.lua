@@ -1,6 +1,6 @@
 function love.load()
 	nouns = {"Your mother", "Your hair", "Your nan", "Your dog", "Your foot", "Your mum's ass", "Your stomach", "Keemstar", "Your brother"}
-	verbs = {"looks like", "is", "smells like", "eats like", "made love with", "ate", "defacated on", "murdered", "killed"}
+	verbs = {"looks like", "is", "smells like", "eats like", "made love with", "ate", "defacated on", "murdered", "killed", "was"}
 	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish", "a frisky cat", "a retard", "foot fungus", "you", "your sister", "an idiot", "your father"}
 
 	love.window.setMode(1280, 720)
