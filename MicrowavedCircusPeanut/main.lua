@@ -1,7 +1,7 @@
 function love.load()
-	nouns = {"Your mother", "Your hair", "Your nan", "Your dog", "Your foot", "Your mum's foot"}
-	verbs = {"looks like", "is", "smells like", "eats like", "made love with"}
-	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish", "a frisky cat", "a retard", "foot fungus", "you", "your sister", "an idiot"}
+	nouns = {"Your mother", "Your hair", "Your nan", "Your dog", "Your foot", "Your mum's ass", "Your stomach", "Keemstar", "Your brother"}
+	verbs = {"looks like", "is", "smells like", "eats like", "made love with", "ate", "defacated on", "murdered", "killed"}
+	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish", "a frisky cat", "a retard", "foot fungus", "you", "your sister", "an idiot", "your father"}
 
 	love.window.setMode(1280, 720)
 
@@ -95,7 +95,7 @@ function love.mousepressed(x, y, button, istouch)
 	if button == 1 then
 		if isMouseHovering(sendButton) and sendButton.isActive then
 			totalposts = totalposts + 1
-			followers = followers + love.math.random(10, 20)
+			followers = math.floor(followers + #message / 1.5)
 			getValues(nouns)
 			gamestage = "nouns"
 			message = ""
