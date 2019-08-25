@@ -134,7 +134,7 @@ function love.draw()
 
 	-- Draw Message Box
 	love.graphics.setColor(1, 1, 1)
-	love.graphics.rectangle("fill", 610, 100, 500, 300)
+	love.graphics.rectangle("fill", 610, 100, 500, 300, 15)
 
 	-- Draw profile pic
 	love.graphics.setColor(1, 1, 1)
