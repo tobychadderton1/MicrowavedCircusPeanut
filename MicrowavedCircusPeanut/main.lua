@@ -10,6 +10,9 @@ function love.load()
 	"your father", "a flat moth", "a liberal", "a zombie", "an elephant",
 	"mouldy bread", "old vomit"}
 
+	WINDOW_WIDTH = 1280
+	WINDOW_HEIGHT = 720
+
 	love.window.setMode(1280, 720)
 
 	love.window.setTitle("Microwaved Circus Peanut")
@@ -23,11 +26,15 @@ function love.load()
 		love.graphics.newImage("assets/img/profpic2.png"),
 		love.graphics.newImage("assets/img/profpic3.png")}
 
+	soundimg1 = love.graphics.newImage("assets/img/sound1.png")
+	soundimg2 = love.graphics.newImage("assets/img/sound2.png")
+
 	select = love.audio.newSource("assets/audio/select.wav", "static")
 
 	track1 = love.audio.newSource("assets/audio/track1.wav", "stream")
 	track1:setLooping(true)
-	love.audio.setVolume(0.2)
+	volume = 0.2
+	love.audio.setVolume(volume)
 	love.audio.play(track1)
 
 	CharacterIndex = 1
@@ -36,6 +43,7 @@ function love.load()
 	followers = 0
 	totalposts = 0
 	msgDone = false
+	muted = false
 	gamestage = "nouns"
 
 	messageFont = love.graphics.newFont(30)
@@ -59,6 +67,15 @@ function love.load()
 	charButton.height = 50
 	charButton.isActive = true
 	charButton.borderradius = 20
+
+	muteButton = {}
+	muteButton.text = ""
+	muteButton.x = WINDOW_WIDTH - 10 - 50
+	muteButton.y = 10
+	muteButton.width = 50
+	muteButton.height = 50
+	muteButton.isActive = true
+	muteButton.borderradius = 10
 
 	option1 = {}
 	option1.text = ""
@@ -144,6 +161,15 @@ function love.mousepressed(x, y, button, istouch)
 				CharacterIndex = 1
 			end
 		end
+		if isMouseHovering(muteButton) and muteButton.isActive then
+			if muted then
+				volume = 0.2
+				muted = false
+			else
+				volume = 0
+				muted = true
+			end
+		end
 		optionButton(option1)
 		optionButton(option2)
 		optionButton(option3)
@@ -209,9 +235,19 @@ function love.draw()
 
 	-- Draw character select button
 	drawButton(charButton)
+
+	-- Draw mute button
+	drawButton(muteButton)
+	if muted then
+		love.graphics.draw(soundimg2, muteButton.x, muteButton.y, 0, 0.1)
+	else
+		love.graphics.draw(soundimg1, muteButton.x, muteButton.y, 0, 0.1)
+	end
 end
 
 function love.update(dt)
+	love.audio.setVolume(volume)
+	
 	sendButton.isActive = msgDone
 	option1.isActive = not msgDone
 	option2.isActive = not msgDone
