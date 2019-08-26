@@ -25,6 +25,11 @@ function love.load()
 
 	select = love.audio.newSource("assets/audio/select.wav", "static")
 
+	track1 = love.audio.newSource("assets/audio/track1.wav", "stream")
+	track1:setLooping(true)
+	love.audio.setVolume(0.2)
+	love.audio.play(track1)
+
 	CharacterIndex = 1
 
 	message = ""
@@ -99,8 +104,6 @@ function isMouseHovering(buttonToCheck)
 	mouseX = love.mouse.getX()
 	mouseY = love.mouse.getY()
 	if mouseX > buttonToCheck.x and mouseX < buttonToCheck.x + buttonToCheck.width and mouseY > buttonToCheck.y and mouseY < buttonToCheck.y + buttonToCheck.height then
-		love.audio.setVolume(0.4)
-		love.audio.play(select)
 		return true
 	end
 end
@@ -119,12 +122,14 @@ function optionButton(optionBtn)
 			message = message .. "\n" .. optionBtn.text
 			msgDone = true
 		end
+		love.audio.play(select)
 	end
 end
 
 function love.mousepressed(x, y, button, istouch)
 	if button == 1 then
 		if isMouseHovering(sendButton) and sendButton.isActive then
+			love.audio.play(select)
 			totalposts = totalposts + 1
 			followers = math.floor(followers + #message / 1.5)
 			getValues(nouns)
@@ -133,6 +138,7 @@ function love.mousepressed(x, y, button, istouch)
 			msgDone = false
 		end
 		if isMouseHovering(charButton) and charButton.isActive then
+			love.audio.play(select)
 			CharacterIndex = CharacterIndex + 1
 			if CharacterIndex > #office then
 				CharacterIndex = 1
