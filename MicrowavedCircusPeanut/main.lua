@@ -3,7 +3,7 @@ function love.load()
 	"Your mum's ass", "Keemstar", "Your brother", "Adolf Hitler", "Stephen Hawking"}
 
 	verbs = {"looks like", "is", "smells like", "eats like", "made love with",
-	"ate", "defacated on", "murdered", "killed", "was", "walks like", "sounds like"}
+	"ate", "defacated on", "murdered", "killed", "was", "is like", "sounds like"}
 
 	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish",
 	"a frisky cat", "a retard", "foot fungus", "you", "your sister", "an idiot",
