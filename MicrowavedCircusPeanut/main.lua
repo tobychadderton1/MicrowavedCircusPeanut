@@ -1,12 +1,14 @@
 function love.load()
 	nouns = {"Your mother", "Your hair", "Your nan", "Your dog", "Your foot",
-	"Your mum's ass", "Your stomach", "Keemstar", "Your brother"}
+	"Your mum's ass", "Keemstar", "Your brother", "Adolf Hitler", "Stephen Hawking"}
 
 	verbs = {"looks like", "is", "smells like", "eats like", "made love with",
-	"ate", "defacated on", "murdered", "killed", "was"}
+	"ate", "defacated on", "murdered", "killed", "was", "walks like", "sounds like"}
 
-	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish", "a frisky cat",
-	"a retard", "foot fungus", "you", "your sister", "an idiot", "your father"}
+	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish",
+	"a frisky cat", "a retard", "foot fungus", "you", "your sister", "an idiot",
+	"your father", "a flat moth", "a liberal", "a zombie", "an elephant",
+	"mouldy bread", "aged vomit"}
 
 	love.window.setMode(1280, 720)
 
@@ -66,11 +68,11 @@ function love.load()
 end
 
 function getValues(typev)
-	love.math.setRandomSeed(love.math.getRandomSeed() + 10)
+	love.math.setRandomSeed(love.math.getRandomSeed() + 7)
 	option1.text = typev[ love.math.random( #typev ) ]
-	love.math.setRandomSeed(love.math.getRandomSeed() + 10)
+	love.math.setRandomSeed(love.math.getRandomSeed() + 7)
 	option2.text = typev[ love.math.random( #typev ) ]
-	love.math.setRandomSeed(love.math.getRandomSeed() + 10)
+	love.math.setRandomSeed(love.math.getRandomSeed() + 7)
 	option3.text = typev[ love.math.random( #typev ) ]
 end
 
