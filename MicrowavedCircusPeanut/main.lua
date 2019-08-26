@@ -14,8 +14,16 @@ function love.load()
 
 	love.window.setTitle("Microwaved Circus Peanut")
 
-	office = love.graphics.newImage("assets/img/office.png")
-	profpic = love.graphics.newImage("assets/img/profpic.png")
+	office = {
+		love.graphics.newImage("assets/img/office1.png"),
+		love.graphics.newImage("assets/img/office2.png"),
+		love.graphics.newImage("assets/img/office3.png")}
+	profpic = {
+		love.graphics.newImage("assets/img/profpic1.png"),
+		love.graphics.newImage("assets/img/profpic2.png"),
+		love.graphics.newImage("assets/img/profpic3.png")}
+
+	CharacterIndex = 1
 
 	message = ""
 	followers = 0
@@ -35,6 +43,15 @@ function love.load()
 	sendButton.height = 50
 	sendButton.isActive = false
 	sendButton.borderradius = 20
+
+	charButton = {}
+	charButton.text = "Change Liar"
+	charButton.x = 610
+	charButton.y = 420
+	charButton.width = 340
+	charButton.height = 50
+	charButton.isActive = true
+	charButton.borderradius = 20
 
 	option1 = {}
 	option1.text = ""
@@ -111,6 +128,12 @@ function love.mousepressed(x, y, button, istouch)
 			message = ""
 			msgDone = false
 		end
+		if isMouseHovering(charButton) and charButton.isActive then
+			CharacterIndex = CharacterIndex + 1
+			if CharacterIndex > #office then
+				CharacterIndex = 1
+			end
+		end
 		optionButton(option1)
 		optionButton(option2)
 		optionButton(option3)
@@ -137,7 +160,7 @@ function love.draw()
 
 	-- Draw Character Image
 	love.graphics.setColor(1, 1, 1)
-	love.graphics.draw(office, 0, 0)
+	love.graphics.draw(office[CharacterIndex], 0, 0)
 
 	-- Draw Message Box
 	love.graphics.setColor(1, 1, 1)
@@ -145,7 +168,7 @@ function love.draw()
 
 	-- Draw profile pic
 	love.graphics.setColor(1, 1, 1)
-	love.graphics.draw(profpic, 635, 115, 0, 0.1)
+	love.graphics.draw(profpic[CharacterIndex], 635, 115, 0, 0.1)
 
 	-- Draw follower count
 	love.graphics.setFont(statsFont)
@@ -173,6 +196,9 @@ function love.draw()
 
 	-- Draw option3 button
 	drawButton(option3)
+
+	-- Draw character select button
+	drawButton(charButton)
 end
 
 function love.update(dt)
