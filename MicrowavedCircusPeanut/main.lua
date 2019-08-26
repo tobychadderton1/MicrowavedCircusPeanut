@@ -8,7 +8,7 @@ function love.load()
 	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish",
 	"a frisky cat", "a retard", "foot fungus", "you", "your sister", "an idiot",
 	"your father", "a flat moth", "a liberal", "a zombie", "an elephant",
-	"mouldy bread", "aged vomit"}
+	"mouldy bread", "old vomit"}
 
 	love.window.setMode(1280, 720)
 
