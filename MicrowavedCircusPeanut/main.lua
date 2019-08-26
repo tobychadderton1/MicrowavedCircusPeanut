@@ -23,6 +23,8 @@ function love.load()
 		love.graphics.newImage("assets/img/profpic2.png"),
 		love.graphics.newImage("assets/img/profpic3.png")}
 
+	select = love.audio.newSource("assets/audio/select.wav", "static")
+
 	CharacterIndex = 1
 
 	message = ""
@@ -96,7 +98,9 @@ end
 function isMouseHovering(buttonToCheck)
 	mouseX = love.mouse.getX()
 	mouseY = love.mouse.getY()
-	if mouseX > buttonToCheck.x and mouseX < buttonToCheck.x + buttonToCheck.width and mouseY > buttonToCheck.y - buttonToCheck.height and mouseY < buttonToCheck.y + buttonToCheck.height then
+	if mouseX > buttonToCheck.x and mouseX < buttonToCheck.x + buttonToCheck.width and mouseY > buttonToCheck.y and mouseY < buttonToCheck.y + buttonToCheck.height then
+		love.audio.setVolume(0.4)
+		love.audio.play(select)
 		return true
 	end
 end
