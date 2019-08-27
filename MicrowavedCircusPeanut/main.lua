@@ -31,15 +31,24 @@ function love.load()
 
 	select = love.audio.newSource("assets/audio/select.wav", "static")
 
-	track1 = love.audio.newSource("assets/audio/track1.wav", "stream")
-	track1:setLooping(true)
-	volume = 0.4
+	tracks = {
+		love.audio.newSource("assets/audio/track1.wav", "stream"),
+		love.audio.newSource("assets/audio/track2.wav", "stream"),
+		love.audio.newSource("assets/audio/track3.wav", "stream")
+	}
+
+	delay = love.audio.newSource("assets/audio/delay.wav", "stream")
+
+	currentTrack = "track1"
+
+	volume = 0.6
 	love.audio.setVolume(volume)
-	love.audio.play(track1)
+	love.audio.play(tracks[1])
 
 	CharacterIndex = 1
 
 	message = ""
+	scoreformessage = 0
 	followers = 0
 	totalposts = 0
 	msgDone = false
@@ -129,14 +138,17 @@ function optionButton(optionBtn)
 	if isMouseHovering(optionBtn) and optionBtn.isActive then
 		if gamestage == "nouns" then
 			message = message .. optionBtn.text
+			scoreformessage = scoreformessage + nouns[optionBtn.text]
 			getValues(verbs)
 			gamestage = "verbs"
 		elseif gamestage == "verbs" then
 			message = message .. "\n" .. optionBtn.text
+			table.insert(messageparts, optionBtn.text)
 			getValues(adjectives)
 			gamestage = "adjectives"
 		else
 			message = message .. "\n" .. optionBtn.text
+			table.insert(messageparts, optionBtn.text)
 			msgDone = true
 		end
 		love.audio.play(select)
@@ -247,6 +259,28 @@ end
 
 function love.update(dt)
 	love.audio.setVolume(volume)
+
+	if not tracks[1]:isPlaying() and currentTrack == "track1" then
+		currentTrack = "delay1"
+		love.audio.play(delay)
+	elseif not delay:isPlaying() and currentTrack == "delay1" then
+		currentTrack = "track2"
+		love.audio.play(tracks[2])
+
+	elseif not tracks[2]:isPlaying() and currentTrack == "track2" then
+		currentTrack = "delay2"
+		love.audio.play(delay)
+	elseif not delay:isPlaying() and currentTrack == "delay2" then
+		currentTrack = "track3"
+		love.audio.play(tracks[3])
+
+	elseif not tracks[3]:isPlaying() and currentTrack == "track3" then
+		currentTrack = "delay3"
+		love.audio.play(delay)
+	elseif not delay:isPlaying() and currentTrack == "delay3" then
+		currentTrack = "track1"
+		love.audio.play(tracks[1])
+	end
 
 	sendButton.isActive = msgDone
 	option1.isActive = not msgDone
