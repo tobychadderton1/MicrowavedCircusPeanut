@@ -48,7 +48,6 @@ function love.load()
 	CharacterIndex = 1
 
 	message = ""
-	scoreformessage = 0
 	followers = 0
 	totalposts = 0
 	msgDone = false
@@ -138,17 +137,14 @@ function optionButton(optionBtn)
 	if isMouseHovering(optionBtn) and optionBtn.isActive then
 		if gamestage == "nouns" then
 			message = message .. optionBtn.text
-			scoreformessage = scoreformessage + nouns[optionBtn.text]
 			getValues(verbs)
 			gamestage = "verbs"
 		elseif gamestage == "verbs" then
 			message = message .. "\n" .. optionBtn.text
-			table.insert(messageparts, optionBtn.text)
 			getValues(adjectives)
 			gamestage = "adjectives"
 		else
 			message = message .. "\n" .. optionBtn.text
-			table.insert(messageparts, optionBtn.text)
 			msgDone = true
 		end
 		love.audio.play(select)
