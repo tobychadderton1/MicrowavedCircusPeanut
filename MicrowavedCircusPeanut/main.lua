@@ -6,9 +6,10 @@ function love.load()
 	"ate", "defacated on", "murdered", "killed", "was", "is like", "sounds like"}
 
 	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish",
-	"a frisky cat", "a retard", "foot fungus", "you", "your sister", "an idiot",
+	"a frisky cat", "a retard", "foot fungus", "your sister", "an idiot",
 	"your father", "a flat moth", "a liberal", "a zombie", "an elephant",
-	"mouldy bread", "old vomit", "a raging feminist"}
+	"mouldy bread", "old vomit", "a raging feminist", "a douchebag",
+	"a schmuk", "a roblox bash", "a used sanitary pad", "my balls"}
 
 	WINDOW_WIDTH = 1280
 	WINDOW_HEIGHT = 720
@@ -185,7 +186,7 @@ function love.mousepressed(x, y, button, istouch)
 	end
 end
 
-function drawButton(buttonTD)
+function drawButton(buttonTD, indent)
 	love.graphics.setColor(1, 1, 1)
 	love.graphics.rectangle("fill", buttonTD.x, buttonTD.y, buttonTD.width, buttonTD.height, buttonTD.borderradius)
 	love.graphics.setFont(buttonFont)
@@ -195,7 +196,7 @@ function drawButton(buttonTD)
 	else
 		love.graphics.setColor(0, 0, 0)
 	end
-	love.graphics.print(buttonTD.text, buttonTD.x + 38, buttonTD.y + 8)
+	love.graphics.print(buttonTD.text, buttonTD.x + indent, buttonTD.y + 8)
 end
 
 function love.draw()
@@ -231,22 +232,22 @@ function love.draw()
 	love.graphics.print(message, 640, 200)
 
 	-- Draw Send Button
-	drawButton(sendButton)
+	drawButton(sendButton, 38)
 
 	-- Draw option1 button
-	drawButton(option1)
+	drawButton(option1, 38)
 
 	-- Draw option2 button
-	drawButton(option2)
+	drawButton(option2, 38)
 
 	-- Draw option3 button
-	drawButton(option3)
+	drawButton(option3, 38)
 
 	-- Draw character select button
-	drawButton(charButton)
+	drawButton(charButton, 70)
 
 	-- Draw mute button
-	drawButton(muteButton)
+	drawButton(muteButton, 38)
 	if muted then
 		love.graphics.draw(soundimg2, muteButton.x, muteButton.y, 0, 0.1)
 	else
