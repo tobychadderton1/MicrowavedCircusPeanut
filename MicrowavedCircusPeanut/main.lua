@@ -33,7 +33,7 @@ function love.load()
 
 	track1 = love.audio.newSource("assets/audio/track1.wav", "stream")
 	track1:setLooping(true)
-	volume = 0.2
+	volume = 0.4
 	love.audio.setVolume(volume)
 	love.audio.play(track1)
 
@@ -247,7 +247,7 @@ end
 
 function love.update(dt)
 	love.audio.setVolume(volume)
-	
+
 	sendButton.isActive = msgDone
 	option1.isActive = not msgDone
 	option2.isActive = not msgDone
