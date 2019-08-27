@@ -235,13 +235,13 @@ function love.draw()
 	drawButton(sendButton, 38)
 
 	-- Draw option1 button
-	drawButton(option1, 38)
+	drawButton(option1, 30)
 
 	-- Draw option2 button
-	drawButton(option2, 38)
+	drawButton(option2, 30)
 
 	-- Draw option3 button
-	drawButton(option3, 38)
+	drawButton(option3, 30)
 
 	-- Draw character select button
 	drawButton(charButton, 70)
