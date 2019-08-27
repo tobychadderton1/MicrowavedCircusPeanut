@@ -41,7 +41,8 @@ function love.load()
 
 	currentTrack = "track1"
 
-	volume = 0.6
+	initvolume = 0.6
+		volume = initvolume
 	love.audio.setVolume(volume)
 	love.audio.play(tracks[1])
 
@@ -171,7 +172,7 @@ function love.mousepressed(x, y, button, istouch)
 		end
 		if isMouseHovering(muteButton) and muteButton.isActive then
 			if muted then
-				volume = 0.2
+				volume = initvolume
 				muted = false
 			else
 				volume = 0
