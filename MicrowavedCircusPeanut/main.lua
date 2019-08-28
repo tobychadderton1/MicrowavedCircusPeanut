@@ -1,10 +1,11 @@
 function love.load()
 	nouns = {"Your mother", "Your hair", "Your nan", "Your dog", "Your foot",
-	"Your mum's ass", "Keemstar", "Your brother", "Adolf Hitler", "Stephen Hawking"}
+	"Your mum's ass", "Keemstar", "Your brother", "Adolf Hitler", "Stephen Hawking",
+	"Kermit the frog"}
 
 	verbs = {"looks like", "is", "smells like", "eats like", "made love with",
 	"ate", "defacated on", "murdered", "killed", "was", "is like", "sounds like",
-	"sniffed", "touched", "stroked"}
+	"sniffed", "touched", "stroked", "shot", "wants to sniff", "wants to be",}
 
 	adjectives = {"an octopus", "a fat turd", "a dead rodent", "a fish",
 	"a frisky cat", "a retard", "foot fungus", "your sister", "an idiot",
@@ -44,7 +45,7 @@ function love.load()
 	currentTrack = "track1"
 
 	initvolume = 0.6
-		volume = initvolume
+	volume = initvolume
 	love.audio.setVolume(volume)
 	love.audio.play(tracks[1])
 
