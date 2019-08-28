@@ -12,11 +12,14 @@ function love.load()
 	office = {
 		love.graphics.newImage("assets/img/office1.png"),
 		love.graphics.newImage("assets/img/office2.png"),
-		love.graphics.newImage("assets/img/office3.png")}
+		love.graphics.newImage("assets/img/office3.png")
+	}
+	
 	profpic = {
 		love.graphics.newImage("assets/img/profpic1.png"),
 		love.graphics.newImage("assets/img/profpic2.png"),
-		love.graphics.newImage("assets/img/profpic3.png")}
+		love.graphics.newImage("assets/img/profpic3.png")
+	}
 
 	soundimg1 = love.graphics.newImage("assets/img/sound1.png")
 	soundimg2 = love.graphics.newImage("assets/img/sound2.png")
