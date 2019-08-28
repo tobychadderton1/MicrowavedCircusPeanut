@@ -1,12 +1,15 @@
 function love.load()
 
+	-- Loading Modules
 	require("phrases")
 
+	-- Constants
 	WINDOW_WIDTH = 1280
 	WINDOW_HEIGHT = 720
+	INIT_VOLUME = 0.15
 
+	-- Setting up the Window
 	love.window.setMode(1280, 720)
-
 	love.window.setTitle("Microwaved Circus Peanut")
 
 	office = {
@@ -14,7 +17,7 @@ function love.load()
 		love.graphics.newImage("assets/img/office2.png"),
 		love.graphics.newImage("assets/img/office3.png")
 	}
-	
+
 	profpic = {
 		love.graphics.newImage("assets/img/profpic1.png"),
 		love.graphics.newImage("assets/img/profpic2.png"),
@@ -36,8 +39,7 @@ function love.load()
 
 	currentTrack = "track1"
 
-	initvolume = 0.2
-	volume = initvolume
+	volume = INIT_VOLUME
 	love.audio.setVolume(volume)
 	love.audio.play(tracks[1])
 
@@ -167,7 +169,7 @@ function love.mousepressed(x, y, button, istouch)
 		end
 		if isMouseHovering(muteButton) and muteButton.isActive then
 			if muted then
-				volume = initvolume
+				volume = INIT_VOLUME
 				muted = false
 			else
 				volume = 0
