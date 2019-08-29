@@ -4,11 +4,15 @@ function save(score)
 	score = score + 5
 	score = score - 1
 	score = score * -2
+	score = score * 718612
+	score = score / 23
 	love.filesystem.write("SAVE.sav", score)
 end
 
 function load()
 	local score = love.filesystem.read("SAVE.sav")
+	score = score * 23
+	score = score / 718612
 	score = score / -2
 	score = score + 1
 	score = score - 5
