@@ -32,7 +32,7 @@ function love.load()
 	INIT_VOLUME = 0.15
 
 	-- Setting up the Window
-	love.window.setMode(1280, 720)
+	love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {msaa = 16})
 	love.window.setTitle("Microwaved Circus Peanut")
 
 	office = {
@@ -75,9 +75,9 @@ function love.load()
 	muted = false
 	gamestage = "nouns"
 
-	messageFont = love.graphics.newFont(30)
-	buttonFont = love.graphics.newFont(30)
-	statsFont = love.graphics.newFont(15)
+	messageFont = love.graphics.newFont("assets/font/manjaribold.ttf", 35)
+	buttonFont = love.graphics.newFont("assets/font/manjaribold.ttf", 35)
+	statsFont = love.graphics.newFont("assets/font/manjaribold.ttf", 15)
 
 	sendButton = {}
 	sendButton.text = "Post"
@@ -221,7 +221,7 @@ function drawButton(buttonTD, indent)
 	else
 		love.graphics.setColor(0, 0, 0)
 	end
-	love.graphics.print(buttonTD.text, buttonTD.x + indent, buttonTD.y + 8)
+	love.graphics.print(buttonTD.text, buttonTD.x + indent, buttonTD.y + 11)
 end
 
 function love.draw()
@@ -244,12 +244,12 @@ function love.draw()
 	-- Draw follower count
 	love.graphics.setFont(statsFont)
 	love.graphics.setColor(0, 0, 0)
-	love.graphics.print("Followers: " .. followers, 695, 144)
+	love.graphics.print("Followers: " .. followers, 695, 148)
 
 	-- Draw post count
 	love.graphics.setFont(statsFont)
 	love.graphics.setColor(0, 0, 0)
-	love.graphics.print("Posts: " .. totalposts, 695, 119)
+	love.graphics.print("Posts: " .. totalposts, 695, 122)
 
 	-- Draw Message text
 	love.graphics.setFont(messageFont)
@@ -260,16 +260,16 @@ function love.draw()
 	drawButton(sendButton, 38)
 
 	-- Draw option1 button
-	drawButton(option1, 30)
+	drawButton(option1, 35)
 
 	-- Draw option2 button
-	drawButton(option2, 30)
+	drawButton(option2, 35)
 
 	-- Draw option3 button
-	drawButton(option3, 30)
+	drawButton(option3, 35)
 
 	-- Draw character select button
-	drawButton(charButton, 70)
+	drawButton(charButton, 65)
 
 	-- Draw mute button
 	drawButton(muteButton, 38)
