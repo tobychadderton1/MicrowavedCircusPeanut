@@ -21,7 +21,7 @@ function love.load()
 	-- Constants
 	WINDOW_WIDTH = 1280
 	WINDOW_HEIGHT = 720
-	INIT_VOLUME = 0.15
+	INIT_VOLUME = 0.1
 
 	-- Setting up the Window
 	love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {msaa = 12})
@@ -260,13 +260,13 @@ function love.draw()
 	drawButton(sendButton, 35)
 
 	-- Draw option1 button
-	drawButton(option1, 30)
+	drawButton(option1, 28)
 
 	-- Draw option2 button
-	drawButton(option2, 30)
+	drawButton(option2, 28)
 
 	-- Draw option3 button
-	drawButton(option3, 30)
+	drawButton(option3, 28)
 
 	-- Draw character select button
 	drawButton(charButton, 65)
