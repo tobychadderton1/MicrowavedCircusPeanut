@@ -2,17 +2,20 @@
 require("phrases")
 require("encryptdecrypt")
 
+-- Save Game Function
 function save(score)
 	score = encrypt(score)
 	love.filesystem.write("SAVE.sav", score)
 end
 
+-- Load game function
 function load()
 	local score = love.filesystem.read("SAVE.sav")
 	score = decrypt(score)
 	followers = math.ceil(score)
 end
 
+-- Main Startup Function
 function love.load()
 
 	-- Constants
@@ -131,6 +134,8 @@ function love.load()
 	end
 end
 
+-- Function to set the text for the
+-- three option buttons
 function getValues(typev)
 	love.math.setRandomSeed(love.math.getRandomSeed() + 7)
 	option1.text = typev[ love.math.random( #typev ) ]
@@ -140,6 +145,7 @@ function getValues(typev)
 	option3.text = typev[ love.math.random( #typev ) ]
 end
 
+-- Check if the mouse is touching a button
 function isMouseHovering(buttonToCheck)
 	mouseX = love.mouse.getX()
 	mouseY = love.mouse.getY()
@@ -148,6 +154,7 @@ function isMouseHovering(buttonToCheck)
 	end
 end
 
+-- Function called when the Option Buttons are pressed
 function optionButton(optionBtn)
 	if isMouseHovering(optionBtn) and optionBtn.isActive then
 		if gamestage == "nouns" then
@@ -166,6 +173,7 @@ function optionButton(optionBtn)
 	end
 end
 
+-- Function called when the mouse is pressed
 function love.mousepressed(x, y, button, istouch)
 	if button == 1 then
 		if isMouseHovering(sendButton) and sendButton.isActive then
@@ -200,6 +208,7 @@ function love.mousepressed(x, y, button, istouch)
 	end
 end
 
+-- Draws a button from table
 function drawButton(buttonTD, indent)
 	love.graphics.setColor(1, 1, 1)
 	love.graphics.rectangle("fill", buttonTD.x, buttonTD.y, buttonTD.width, buttonTD.height, buttonTD.borderradius)
@@ -213,6 +222,7 @@ function drawButton(buttonTD, indent)
 	love.graphics.print(buttonTD.text, buttonTD.x + indent, buttonTD.y + 11)
 end
 
+-- Main draw function
 function love.draw()
 	-- Draw Background
 	love.graphics.setColor(0.5, 1, 1)
@@ -269,6 +279,7 @@ function love.draw()
 	end
 end
 
+-- Called every frame
 function love.update(dt)
 	love.audio.setVolume(volume)
 
