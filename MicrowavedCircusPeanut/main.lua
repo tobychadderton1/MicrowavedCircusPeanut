@@ -1,30 +1,19 @@
+-- Loading Modules
+require("phrases")
+require("encryptdecrypt")
+
 function save(score)
-	score = score * 6132
-	score = score / 2
-	score = score + 5
-	score = score - 1
-	score = score * -2
-	score = score * 718612
-	score = score / 23
+	score = encrypt(score)
 	love.filesystem.write("SAVE.sav", score)
 end
 
 function load()
 	local score = love.filesystem.read("SAVE.sav")
-	score = score * 23
-	score = score / 718612
-	score = score / -2
-	score = score + 1
-	score = score - 5
-	score = score * 2
-	score = score / 6132
+	score = decrypt(score)
 	followers = math.ceil(score)
 end
 
 function love.load()
-
-	-- Loading Modules
-	require("phrases")
 
 	-- Constants
 	WINDOW_WIDTH = 1280
@@ -32,7 +21,7 @@ function love.load()
 	INIT_VOLUME = 0.15
 
 	-- Setting up the Window
-	love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {msaa = 16})
+	love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {msaa = 12})
 	love.window.setTitle("Microwaved Circus Peanut")
 
 	office = {
@@ -113,7 +102,7 @@ function love.load()
 	option1.width = 350
 	option1.height = 50
 	option1.isActive = true
-	option1.borderradius = 10
+	option1.borderradius = 15
 
 	option2 = {}
 	option2.text = ""
@@ -122,7 +111,7 @@ function love.load()
 	option2.width = 350
 	option2.height = 50
 	option2.isActive = true
-	option2.borderradius = 10
+	option2.borderradius = 15
 
 	option3 = {}
 	option3.text = ""
@@ -131,7 +120,7 @@ function love.load()
 	option3.width = 350
 	option3.height = 50
 	option3.isActive = true
-	option3.borderradius = 10
+	option3.borderradius = 15
 
 	-- Get initial phrases
 	getValues(nouns)
@@ -257,7 +246,7 @@ function love.draw()
 	love.graphics.print(message, 640, 200)
 
 	-- Draw Send Button
-	drawButton(sendButton, 36)
+	drawButton(sendButton, 35)
 
 	-- Draw option1 button
 	drawButton(option1, 30)
