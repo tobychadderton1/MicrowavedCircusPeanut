@@ -257,16 +257,16 @@ function love.draw()
 	love.graphics.print(message, 640, 200)
 
 	-- Draw Send Button
-	drawButton(sendButton, 38)
+	drawButton(sendButton, 35)
 
 	-- Draw option1 button
-	drawButton(option1, 35)
+	drawButton(option1, 30)
 
 	-- Draw option2 button
-	drawButton(option2, 35)
+	drawButton(option2, 30)
 
 	-- Draw option3 button
-	drawButton(option3, 35)
+	drawButton(option3, 30)
 
 	-- Draw character select button
 	drawButton(charButton, 65)
