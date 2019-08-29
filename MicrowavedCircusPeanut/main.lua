@@ -1,3 +1,22 @@
+function save(score)
+	score = score * 6132
+	score = score / 2
+	score = score + 5
+	score = score - 1
+	score = score * -2
+	love.filesystem.write("SAVE.sav", score)
+end
+
+function load()
+	local score = love.filesystem.read("SAVE.sav")
+	score = score / -2
+	score = score + 1
+	score = score - 5
+	score = score * 2
+	score = score / 6132
+	followers = math.floor(score)
+end
+
 function love.load()
 
 	-- Loading Modules
@@ -112,6 +131,9 @@ function love.load()
 
 	-- Get initial phrases
 	getValues(nouns)
+
+	-- Load save data
+	load()
 end
 
 function getValues(typev)
@@ -155,6 +177,7 @@ function love.mousepressed(x, y, button, istouch)
 			love.audio.play(select)
 			totalposts = totalposts + 1
 			followers = math.floor(followers + #message / 1.5)
+			save(followers)
 			getValues(nouns)
 			gamestage = "nouns"
 			message = ""
