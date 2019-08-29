@@ -26,6 +26,7 @@ function love.load()
 	-- Setting up the Window
 	love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {msaa = 12})
 	love.window.setTitle("Microwaved Circus Peanut")
+	love.window.setIcon(love.image.newImageData(1,1))
 
 	office = {
 		love.graphics.newImage("assets/img/office1.png"),
