@@ -14,7 +14,7 @@ function load()
 	score = score - 5
 	score = score * 2
 	score = score / 6132
-	followers = math.floor(score)
+	followers = math.ceil(score)
 end
 
 function love.load()
@@ -133,7 +133,9 @@ function love.load()
 	getValues(nouns)
 
 	-- Load save data
-	load()
+	if love.filesystem.getInfo("SAVE.sav") then
+		load()
+	end
 end
 
 function getValues(typev)
